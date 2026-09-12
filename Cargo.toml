@@ -1,0 +1,18 @@
+[package]
+name = "nativelite-uwidth"
+version = "0.1.0"
+edition = "2021"
+description = "Unicode display width (0/1/2 columns per char) from the UCD. Zero third-party dependencies; standard library only."
+license = "MIT"
+repository = "https://github.com/nativelite/uwidth-rs"
+keywords = ["unicode", "width", "wcwidth", "terminal", "nativelite"]
+categories = ["text-processing", "command-line-interface", "no-std::no-alloc"]
+
+# nativelite core rule: ZERO third-party dependencies. The width tables are
+# generated from the Unicode Character Database (see tools/gen_tables.py) and
+# vendored as plain `const` arrays in src/tables.rs — no crates.io data crate.
+[dependencies]
+
+[lib]
+name = "uwidth"
+path = "src/lib.rs"
