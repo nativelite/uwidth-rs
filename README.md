@@ -26,7 +26,7 @@ Widths follow the Unicode Character Database (`uwidth::UNICODE_VERSION`, current
 
 | Width | Characters |
 | ----- | ---------- |
-| **0** | Combining marks (`Mn`/`Me`), default-ignorable format chars (ZWSP/ZWNJ/ZWJ/variation selectors), conjoining Hangul Jamo, and C0/C1 control characters |
+| **0** | Combining marks (`Mn`/`Me`), default-ignorable format chars (ZWSP/ZWNJ/ZWJ/variation selectors), conjoining Hangul Jamo medial vowels and final consonants (leading jamo are width 2), and C0/C1 control characters |
 | **2** | East Asian *Wide* and *Fullwidth*, and characters with default emoji presentation (`Emoji_Presentation`) |
 | **1** | Everything else. East Asian *Ambiguous* defaults to 1 (correct outside legacy CJK terminals) |
 
@@ -34,7 +34,7 @@ Widths follow the Unicode Character Database (`uwidth::UNICODE_VERSION`, current
 1 + mark 0). It does not reshape emoji ZWJ sequences into a single cluster — it
 reports what a terminal that does not itself cluster will render.
 
-The crate is `#![no_std]`, allocation-free (tables are `const` slices, lookup is
+The crate is `#![no_std]`, allocation-free (tables are `static` slices, lookup is
 a binary search), and `#![forbid(unsafe_code)]`.
 
 ## Regenerating the tables

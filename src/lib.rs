@@ -11,14 +11,15 @@
 //! Widths follow the Unicode Character Database (see [`UNICODE_VERSION`]):
 //!
 //! - **0** — combining marks (general category `Mn`/`Me`), default-ignorable
-//!   format characters (ZWSP, ZWNJ, ZWJ, …), conjoining Hangul Jamo, and the
-//!   C0/C1 control characters (they advance no display column).
+//!   format characters (ZWSP, ZWNJ, ZWJ, …), conjoining Hangul Jamo medial
+//!   vowels and final consonants (leading jamo are width 2), and the C0/C1
+//!   control characters (they advance no display column).
 //! - **2** — East Asian *Wide* and *Fullwidth* characters and characters with
 //!   default emoji presentation (`Emoji_Presentation`).
 //! - **1** — everything else. East Asian *Ambiguous* characters default to 1,
 //!   the correct choice outside a legacy CJK terminal context.
 //!
-//! This crate is `#![no_std]` and allocation-free: the tables are plain `const`
+//! This crate is `#![no_std]` and allocation-free: the tables are plain `static`
 //! slices and lookup is a binary search.
 //!
 //! ```
